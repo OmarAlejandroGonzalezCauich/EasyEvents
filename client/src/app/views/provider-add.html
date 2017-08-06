@@ -1,0 +1,191 @@
+<div class="col-lg-12" *ngIf="identity">
+	<h1> {{titulo}} </h1>
+
+	<div *ngIf="alertMessage">
+	    <div class="alert alert-warning">
+	      {{alertMessage}}
+	    </div>
+    </div>
+
+	<form #formProvider="ngForm" (ngSubmit)="onSubmit()" class="well form-horizontal" id="contact_form">
+		<!-- Text input-->
+		<legend>Bienvenido, por favor rellenar la siguiente información</legend>
+
+		<!-- Imagen 
+		<div  class="form-group" *ngIf="is_edit">
+			<div class="provider_img_for_edit" *ngIf="provider.img && provider.img != 'null'">
+				<img src="{{url + 'get-image-provider/' + provider.img }}" />
+			</div>
+		</div>--> 
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Nombre</label>  
+		  <div class="col-md-4 inputGroupContainer">
+		  <div class="input-group">
+		  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		  <input  #name="ngModel" name="name" [(ngModel)]="provider.name" placeholder="Nombre" class="form-control"  type="text">
+		    </div>
+		  </div>
+		</div>
+
+
+		<!-- Text input-->
+		       <div class="form-group">
+		  <label class="col-md-4 control-label">E-Mail</label>  
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+		  <input #email="ngModel" name="email" [(ngModel)]="provider.email" placeholder="E-Mail" class="form-control"  type="text">
+		    </div>
+		  </div>
+		</div>
+
+
+		<!-- Text input-->
+		       
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Número Telefónico</label>  
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+		  <input #telephone="ngModel" name="telephone" [(ngModel)]="provider.telephone" placeholder="Telefóno (845)555-1212" class="form-control" type="text">
+		    </div>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		      
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Dirección</label>  
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+		  <input #address="ngModel" name="address" [(ngModel)]="provider.address" placeholder="Dirección" class="form-control" type="text">
+		    </div>
+		  </div>
+		</div>
+
+		<!-- Text input-->
+		 
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Ciudad</label>  
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+		  <input #city="ngModel" name="city" [(ngModel)]="provider.city" placeholder="Ciudad" class="form-control"  type="text">
+		    </div>
+		  </div>
+		</div>
+
+		<!-- Select Basic -->
+		   
+		<div class="form-group"> 
+		  <label class="col-md-4 control-label">Estado</label>
+		    <div class="col-md-4 selectContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+		    <select #state="ngModel" name="state" [(ngModel)]="provider.state" class="form-control selectpicker" >
+		      <option value=" " >Por favor, seleccione su estado</option>
+		      <option value="Aguascalientes">Aguascalientes</option>
+		      <option value="Baja California">Baja California</option>
+		      <option value="Baja California Sur">Baja California Sur</option>
+		      <option value="Campeche">Campeche</option>
+		      <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+		      <option value="Colima">Colima</option>
+		      <option value="Chiapas">Chiapas</option>
+		      <option value="Chihuahua">Chihuahua</option>
+		      <option value="Distrito Federal">Distrito Federal</option>
+		      <option value="Guanajuato">Guanajuato</option>
+		      <option value="Guerrero">Guerrero</option>
+		      <option value="Hidalgo">Hidalgo</option>
+		      <option value="Jalisco">Jalisco</option>
+		      <option value="México">México</option>
+		      <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+		      <option value="Morelos">Morelos</option>
+		      <option value="Nayarit">Nayarit</option>
+		      <option value="Nuevo León">Nuevo León</option>
+		      <option value="Oaxaca">Oaxaca</option>
+		      <option value="Puebla">Puebla</option>
+		      <option value="Querétaro">Querétaro</option>
+		      <option value="Quintana Roo">Quintana Roo</option>
+		      <option value="San Luis Potosí">San Luis Potosí</option>
+		      <option value="Sinaloa">Sinaloa</option>
+		      <option value="Sonora">Sonora</option>
+		      <option value="Tabasco">Tabasco</option>
+		      <option value="Tamaulipas">Tamaulipas</option>
+		      <option value="Tlaxcala">Tlaxcala</option>
+		      <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+		      <option value="Yucatán">Yucatán</option>
+		      <option value="Zacatecas">Zacatecas</option>
+		    </select>
+		  </div>
+		</div>
+		</div>
+
+		<!-- Text input-->
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Código Postal</label>  
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+		  <input #zip="ngModel" name="zip" [(ngModel)]="provider.zip" placeholder="Código Postal" class="form-control"  type="text">
+		    </div>
+		</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group"> 
+		  <label class="col-md-4 control-label">Tipo de producto</label>
+		    <div class="col-md-4 selectContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+		    <select #product="ngModel" name="product" [(ngModel)]="provider.product" class="form-control selectpicker" >
+		      <option value=" " >Por favor, seleccione su servicio</option>
+		    </select>
+		  </div>
+		</div>
+		</div>
+
+		<!-- Text area -->
+		  
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Descripción del producto</label>
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+		          <textarea class="form-control" #description="ngModel" name="description" [(ngModel)]="provider.description" placeholder="Descripción de la compañia"></textarea>
+		  </div>
+		  </div>
+		</div>
+	<!-- Text area -->
+
+		<div class="form-group">
+		  <label class="col-md-4 control-label">Precio</label>  
+		    <div class="col-md-4 inputGroupContainer">
+		    <div class="input-group">
+		        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+		  <input #price="ngModel" name="price" [(ngModel)]="provider.price" placeholder="Precio Del Establecimiento" class="form-control"  type="text">
+		    </div>
+		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Imagen del proveedor</label>  
+			<input type="file" placeholder="Subir imagen..." (change)="fileChangeEvent($event)" />
+		</div>
+
+		<!-- Button -->
+		<div class="form-group">
+ 			<label class="col-md-4 control-label"></label>
+  			<div class="col-md-4">
+   				<input type="submit" value="{{titulo}}" [disabled]="!formProvider.form.valid" class="btn - btn-primary">
+  			</div>
+		</div>
+	
+	</form>
+</div>
+
+<div class="col-lg-12" *ngIf="!identity">
+	<h1>Error</h1>
+	<p>No tienes acceso a esta parte de la aplicación</p>
+</div>

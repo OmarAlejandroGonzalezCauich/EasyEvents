@@ -1,0 +1,169 @@
+<div *ngIf="identity" class="navigation col-md-2">
+	<h1 class="head-title">
+        <a [routerLink]="['/']">
+  	         {{title}}
+        </a>
+	</h1>
+
+    <nav id="navigation">
+        <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            Mis Datos
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            Mi Compañia
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            Mis Clientes
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+            Mis Eventos
+        </a>
+        <a [routerLink]="['/providers', 1]" [routerLinkActive]="['actived']">
+            <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+            Mis Proveedores
+        </a>
+        <a href="">
+            <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+            Mis Establecimientos
+        </a>
+    </nav>
+    <nav id="user_logged">
+        <div class="form-group">
+            <div class="user-img">
+                <img id="img-logged" src="{{url + 'get-image-user/' + identity.img}}"/>
+            </div>
+        </div>
+        <span id="identity_name">
+            {{identity.name}}
+        </span>
+
+        <a (click)="logout()" class="btn-logout">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            Salir
+        </a>
+    </nav>
+    
+</div>
+
+
+<div [class.hidden]="!identity" class="central col-md-10">
+    <router-outlet></router-outlet>   
+</div>
+
+<div *ngIf="!identity" >
+		<head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Login</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+		
+    </head>
+    <body class="fondo">
+        <div class="container">
+           
+            <header>
+                <h1>
+                    <br>
+                    <br>
+                </h1>
+				
+            </header>
+            <section>				
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form #loginForm="ngForm" (ngSubmit)="onSubmit()" > 
+                                <h1>Easy Events</h1> 
+
+                                <div *ngIf="errorMessage">
+                                    <div class="alert alert-danger">
+                                        <strong>Error!</strong>
+                                        {{errorMessage}}
+                                    </div>
+                                </div>
+
+                                <p> 
+                                    <label for="username" class="uname" >Email:</label>
+                                    <input id="username" #email="ngModel" name="email" [(ngModel)]="user.email" required="required" type="email" placeholder="miemail@mail.com"/>
+                                    <span *ngIf="!email.valid && email.touched">
+                                    	El email es obligatorio
+                                    </span>
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd">Password:</label>
+                                    <input id="password" #password="ngModel" name="password" [(ngModel)]="user.password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <span *ngIf="!password.valid && password.touched">
+                                        El password es obligatorio
+                                    </span>
+                                </p>
+                                <p class="keeplogin"> 
+									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+									<label for="loginkeeping">Recordar mi contraseña</label>
+								</p>
+                                <input type="submit" value="Entrar" class="btn btn-primary">
+                                </form>
+                                <p class="change_link">
+									¿No eres miembro?
+									<a href="#toregister" class="to_register">Registrate</a>
+								</p>
+                        </div>
+
+                        <div id="register" class="animate form">
+                            <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" autocomplete="on"> 
+                                <h1>Registrate</h1> 
+
+                                <div *ngIf="alertRegister">
+                                    <div class="alert alert-success">
+                                        {{alertRegister}}
+                                    </div>
+                                </div>
+                                <div *ngIf="alertRegisterEmail">
+                                    <div class="alert alert-warning">
+                                        {{alertRegisterEmail}}
+                                    </div>
+                                </div>
+
+                                <p> 
+                                    <label for="usernamesignup" class="uname" >Tu nombre:</label>
+                                    <input id="usernamesignup" #name="ngModel" name="name" [(ngModel)]="user_register.name" required="required" type="text" placeholder="nombre de usuario" />
+                                    <span *ngIf="!name.valid && name.touched">
+                                        El nombre es obligatorio
+                                    </span>
+                                </p>
+                                <p> 
+                                    <label for="emailsignup" class="youmail"  >Email:</label>
+                                    <input id="emailsignup" #email="ngModel" name="email" [(ngModel)]="user_register.email" required="required" type="email" placeholder="miemial@mail.com"/> 
+                                    <span *ngIf="!email.valid && email.touched">
+                                        El email es obligatorio
+                                    </span>
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup" class="youpasswd" >Contraseña:</label>
+                                    <input id="passwordsignup" #password="ngModel" name="password" [(ngModel)]="user_register.password" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                    <span *ngIf="!password.valid && password.touched">
+                                        La contraseña es necesaria
+                                    </span>
+                                </p>
+                                <p class="signin button"> 
+									<input type="submit" value="Registrar"/> 
+								</p>
+                                <p class="change_link">  
+									¿Ya eres miembro?
+									<a href="#tologin" class="to_register">Entra</a>
+								</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>  
+            </section>
+        </div>
+    </body>
+</div>

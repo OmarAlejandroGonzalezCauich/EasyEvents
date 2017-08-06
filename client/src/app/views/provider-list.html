@@ -1,0 +1,41 @@
+<div class="head-page" *ngIf=identity>
+	<h1>{{titulo}}</h1>
+	<a [routerLink]="['/add-provider']" *ngIf="identity" class="btn btn-default">
+		Añadir Proveedor
+	</a>
+	<ul class="pagination pull-right">
+		<li><a [routerLink]="['/providers', prev_page]">&laquo;</a></li>
+		<li><a [routerLink]="['/providers', next_page]">&raquo;</a></li>
+	</ul>
+</div>
+
+<div class="clearfix"></div>
+
+<ul class="provider-list" *ngIf=identity>
+		<li *ngFor="let provider of providers" class="col-lg-3 provider-item">
+			<div class="provider-img">
+				<img src="{{ url + 'get-image-provider/' + provider.img}}" >
+			</div>
+			<div class="provider-name">
+			<a [routerLink]="['/provider', provider._id]">
+				{{provider.name}}
+			</a>
+
+			<div class="buttons">
+				<a [routerLink]="['/edit-provider', provider._id]" class="btn btn-sm btn-warning">Editar</a>
+				<a (click)="onDeleteConfirm(provider._id)" class="btn btn-sm btn-danger">
+					Borrar
+				</a>
+			</div>
+
+			<div class="options" *ngIf="confirmed == provider._id">
+				<a (click)="onDeleteProvider(provider._id)" class="btn btn-sm btn-danger">
+					Eliminar
+				</a>
+				<a (click)="onCancelProvider()" class="btn btn-sm btn-primary">
+					Cancelar
+				</a>
+			</div>
+		</div>
+		</li>
+</ul>

@@ -1,0 +1,35 @@
+{
+  "name": "easyevents",
+  "version": "1.0.0",
+  "description": "Software encargado de ayudar y asistir a todo creador de eventos",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmarAlejandroGonzalezCauich/easyevents.git"
+  },
+  "author": "Omar Alejandor Gonzalez Cauich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OmarAlejandroGonzalezCauich/easyevents/issues"
+  },
+  "homepage": "https://github.com/OmarAlejandroGonzalezCauich/easyevents#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "connect-multiparty": "^2.0.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.15.2",
+    "jade": "^1.11.0",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1",
+    "mongoose": "^4.9.9",
+    "mongoose-pagination": "^1.0.0"
+  },
+  "devDependencies": {
+    "grit": "^0.2.5",
+    "nodemon": "^1.11.0"
+  }
+}

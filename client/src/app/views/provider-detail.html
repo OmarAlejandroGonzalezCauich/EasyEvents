@@ -1,0 +1,13 @@
+<div *ngIf="provider" class="provider-box">
+	<div id="provider-head-card">
+		<div class="image">
+			<img src="{{ url + 'get-image-provider/' + provider.img }}" *ngIf="provider.img && provider.img !== 'null'" >
+		</div>
+		<div class="data">
+			<h1>{{provider.name}}</h1>
+			<p class="description">
+				{{provider.description}}
+			</p>
+		</div>
+	</div>
+</div>
